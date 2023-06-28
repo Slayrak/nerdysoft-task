@@ -14,6 +14,6 @@ public interface IAnnouncementRepository
     Task DeleteAnnouncement(long id);
 
     Task<IEnumerable<AnnouncementModel>> GetAllAnnouncements();
-    Task<IEnumerable<AnnouncementModel>> GetSimilarAnnouncements(AnnouncementModel announcementDTO);
+    Task<IEnumerable<AnnouncementModel>> GetSimilarAnnouncements(long id);
 
 }

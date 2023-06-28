@@ -37,39 +37,22 @@ public class AnnouncementRepository : IAnnouncementRepository
         return await _appDbContext.Announcements.ToListAsync();
     }
 
-    public async Task<IEnumerable<AnnouncementModel>> GetSimilarAnnouncements(AnnouncementModel announcement)
+    public async Task<IEnumerable<AnnouncementModel>> GetSimilarAnnouncements(long id)
     {
+        var announcement = await _appDbContext.Announcements.FirstOrDefaultAsync(x => x.Id == id);
+
         var result = new List<AnnouncementModel> { announcement };
 
         var announcementTitleWords = announcement.Title.Split(' ');
         var announcementDescriptionWords = announcement.Description.Split(' ');
 
-        var selectedAnnouncements = _appDbContext.Announcements.Where(obj =>
-            announcementTitleWords.Any(word => obj.Title.Contains(word)) &&
-            announcementDescriptionWords.Any(word => obj.Description.Contains(word))
-        ).Take(3).ToList();
+        var check = announcementTitleWords.Any(word => _appDbContext.Announcements.ToList()[0].Title.Contains(word));
 
-        //result.AddRange(_appDbContext.Announcements
-        //    .Where(x => 
-        //    announcement.Title.Split(' ').Any(word => x.Title.Contains(word))
-        //    );
-
-        //foreach(var item in await _appDbContext.Announcements.ToListAsync())
-        //{
-        //    var announcementTitleWords = announcement.Title.Split(' ');
-        //    var announcementDescriptionWords = announcement.Description.Split(' ');
-
-        //    var itemTitleWords = item.Title.Split(' ');
-        //    var itemDescriptionSplit = item.Description.Split(' ');
-
-        //    bool ifTitleContains = announcementTitleWords.Any(word => itemTitleWords.Contains(word));
-        //    bool ifDescriptionContains = announcementDescriptionWords.Any(word => itemDescriptionSplit.Contains(word));
-
-        //    if(ifTitleContains && ifDescriptionContains)
-        //    {
-        //        result.Add(item);
-        //    }
-        //}
+        var selectedAnnouncements = _appDbContext.Announcements.ToList().Where(obj =>
+            announcementTitleWords.Any(word => obj.Title.Split(' ').Contains(word)) &&
+            announcementDescriptionWords.Any(word => obj.Description.Split(' ').Contains(word)) &&
+            obj.Id != id
+        ).Take(3);
 
         result.AddRange(selectedAnnouncements);
 

@@ -33,7 +33,8 @@ public static class DataSeed
             for (int i = 0; i < 10; i++)
             {
                 var fake = new Faker<AnnouncementModel>()
-                            .RuleFor(x => x.Description, x => x.Lorem.Paragraph());
+                            .RuleFor(x => x.Description, x => x.Lorem.Paragraph())
+                            .RuleFor(x => x.DateAdded, x => x.Date.Recent());
 
                 var record = fake.Generate();
 

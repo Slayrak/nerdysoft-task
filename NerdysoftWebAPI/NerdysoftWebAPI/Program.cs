@@ -1,5 +1,7 @@
 using NerdysoftWebAPI.Configurations;
 using NerdysoftWebAPI.Database.Interfaces;
+using NerdysoftWebAPI.Database.Repositories;
+using NerdysoftWebAPI.MapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddScoped<IAnnouncementRepository, IAnnouncementRepository>();
+builder.Services.AddAutoMapper(typeof(AnnouncementProfile).Assembly);
+
+builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 
 builder.Services.AddDataAccess(builder.Configuration);
 
