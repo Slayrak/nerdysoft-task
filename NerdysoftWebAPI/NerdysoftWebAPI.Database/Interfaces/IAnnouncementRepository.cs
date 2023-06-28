@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NerdysoftWebAPI.Database.Dto_s;
+using NerdysoftWebAPI.Database.Models;
 
 namespace NerdysoftWebAPI.Database.Interfaces;
 public interface IAnnouncementRepository
 {
-    Task<long> AddAnnouncement(AnnouncementModelDTO announcementDTO);
-    Task<AnnouncementModelDTO> UpdateAnnouncement(AnnouncementModelDTO announcementDTO);
+    Task<long> AddAnnouncement(AnnouncementModel announcementDTO);
+    Task<AnnouncementModel> UpdateAnnouncement(AnnouncementModel announcementDTO);
     Task DeleteAnnouncement(long id);
 
-    Task<IEnumerable<AnnouncementModelDTO>> GetAllAnnouncements();
-    Task<IEnumerable<AnnouncementModelDTO>> GetSimilarAnnouncements(AnnouncementModelDTO announcementDTO);
+    Task<IEnumerable<AnnouncementModel>> GetAllAnnouncements();
+    Task<IEnumerable<AnnouncementModel>> GetSimilarAnnouncements(AnnouncementModel announcementDTO);
 
 }

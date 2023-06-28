@@ -15,15 +15,30 @@ public static class DataSeed
         {
             var announcementList = new List<AnnouncementModel>();
 
-            for (int i = 0; i < 15; i++)
+            //Bogus does not provide titles so I will go with my set of titles
+            var titles = new List<string>
+            {
+                "Title One",
+                "Title Two",
+                "Title Three",
+                "Powerwolf",
+                "Conference today",
+                "Random event",
+                "Planned event",
+                "Title Four",
+                "Lorem Ipsum",
+                "I don't know what to say"
+            };
+
+            for (int i = 0; i < 10; i++)
             {
                 var fake = new Faker<AnnouncementModel>()
                             .RuleFor(x => x.Description, x => x.Lorem.Paragraph());
 
                 var record = fake.Generate();
 
-                record.Id = i;
-                record.Title = $"I am Title {i}";
+                record.Id = i + 1;
+                record.Title = titles[i];
                 announcementList.Add(record);
             }
 

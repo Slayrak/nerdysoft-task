@@ -12,4 +12,10 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     public DbSet<AnnouncementModel> Announcements { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<AnnouncementModel>()
+            .HasKey(e => e.Id);
+    }
 }
