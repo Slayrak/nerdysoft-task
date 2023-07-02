@@ -12,7 +12,7 @@
 </div>
 
 <dialog class="update-dialog" #updateDialog>
-    <form (ngSubmit)="updateAnnouncement()" #updateForm="ngForm">
+    <form #updateForm="ngForm">
       <div class="modal-body">
         <label id="title-label">Title:</label>
         <input type="text" id="title" name="title" [(ngModel)]="announcementModel.title">
@@ -22,7 +22,7 @@
       </div>
       <div>
         <button (click)="closeDialog()">Cancel</button>
-        <button id="addBtn" type="submit" value="default">Confirm</button>
+        <button (click)="updateAnnouncement()" id="addBtn" type="submit" value="default">Confirm</button>
       </div>
     </form>
 </dialog>

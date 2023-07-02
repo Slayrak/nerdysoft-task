@@ -4,7 +4,7 @@
       <button id="openBtn" (click)="openDialog()">Add new announcement</button>
     </p>
     <dialog class="add-dialog" #addDialog>
-      <form (ngSubmit)="addAnnouncement()" #addForm="ngForm">
+      <form #addForm="ngForm">
         <div class="modal-body">
           <label id="title-label">Title:</label>
           <input type="text" id="title" name="title" [(ngModel)]="announcementModel.title" required>
@@ -14,7 +14,7 @@
         </div>
         <div>
           <button (click)="closeDialog()">Cancel</button>
-          <button id="addBtn" type="submit" >Confirm</button>
+          <button (click)="addAnnouncement()" id="addBtn" type="submit" >Confirm</button>
         </div>
       </form>
     </dialog>
