@@ -27,10 +27,11 @@ public static class DataSeed
                 "Planned event",
                 "Title Four",
                 "Lorem Ipsum",
-                "I don't know what to say"
+                "I don't know what to say",
+                "Title Five"
             };
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 11; i++)
             {
                 var fake = new Faker<AnnouncementModel>()
                             .RuleFor(x => x.Description, x => x.Lorem.Paragraph())

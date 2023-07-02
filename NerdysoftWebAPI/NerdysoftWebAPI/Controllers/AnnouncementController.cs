@@ -27,7 +27,7 @@ public class AnnouncementController : ControllerBase
         return Ok(await _announcementRepository.AddAnnouncement(model));
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAnnouncement(long id)
     {
         await _announcementRepository.DeleteAnnouncement(id);
@@ -55,7 +55,7 @@ public class AnnouncementController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("get-similar")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetSelectedOne(long id)
     {
         var allAnnouncements = await _announcementRepository.GetSimilarAnnouncements(id);

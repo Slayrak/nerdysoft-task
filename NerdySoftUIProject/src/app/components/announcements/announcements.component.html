@@ -1,0 +1,66 @@
+<div class="announcement-body">
+    <div class="announcement-title">
+        <label>
+            {{ announcement.title }}
+        </label>
+    </div>
+    <div class="buttons">
+        <button class="btn btn-info announcement-button" (click)="openSimilarDialog()">Show details</button>
+        <button class="btn btn-secondary announcement-button" (click)="openDialog()">Update</button>
+        <button class="btn btn-danger announcement-button" (click)="deleteRecord()">Delete</button>
+    </div>
+</div>
+
+<dialog class="update-dialog" #updateDialog>
+    <form (ngSubmit)="updateAnnouncement()" #updateForm="ngForm">
+      <div class="modal-body">
+        <label id="title-label">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="announcementModel.title">
+
+        <label id="description-label">Description:</label>
+        <input type="text" id="description" name="description" [(ngModel)]="announcementModel.description">
+      </div>
+      <div>
+        <button (click)="closeDialog()">Cancel</button>
+        <button id="addBtn" type="submit" value="default">Confirm</button>
+      </div>
+    </form>
+</dialog>
+
+<dialog class="details-dialog" #similarDialog>
+    <div class="modal-body">
+      <label id="title-label">Title:</label>
+      <div id="title">{{ announcement.title }}</div>
+
+      <label id="description-label">Description:</label>
+      <div id="description">{{ announcement.description }}</div>
+
+      <label id="date-label">Date added:</label>
+      <div id="date">{{ announcement.dateAdded }}</div>
+    </div>
+    <hr>
+    <div class="similar">
+      Similar announcemets
+    </div>
+    <div>
+      <table>
+        <tr *ngFor="let announcement of announcements | slice:1" >
+          <div class="announcement-item">
+            <label class="title-label">Title:</label>
+            <div id="title">{{ announcement.title }}</div>
+        
+            <label class="description-label">Description:</label>
+            <div id="description">{{ announcement.description }}</div>
+        
+            <label class="date-label">Date added:</label>
+            <div id="date">{{ announcement.dateAdded }}</div>
+          </div>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <button (click)="closeSimilarDialog()">Cancel</button>
+    </div>
+
+</dialog>
+

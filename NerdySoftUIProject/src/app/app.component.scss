@@ -1,0 +1,61 @@
+.main-body {
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    gap: 10px;
+    grid-template-rows: auto auto;
+}
+
+.add-button {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 3%;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.announcements {
+    grid-column: 2;
+    grid-row: 2;
+
+    margin-top: 10px;
+}
+
+.modal-body
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    grid-template-rows: auto auto;
+
+    margin-bottom: 10px;
+}
+
+#title-label {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#description-label {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#title {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#description {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.announcement-item {
+    margin-bottom: 10px;
+    border: 2px;
+}
+
+table {
+    width: 100%;
+}
